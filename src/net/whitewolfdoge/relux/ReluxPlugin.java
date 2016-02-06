@@ -1,5 +1,7 @@
 package net.whiteWolfdoge.relux;
 
+import java.util.LinkedList;
+
 import net.whiteWolfdoge.relux.util.Relighter;
 
 import org.bukkit.ChatColor;
@@ -40,20 +42,22 @@ public class ReluxPlugin extends JavaPlugin{
 		}
 		else{
 			try{
-				byte rad = Byte.parseByte(radRaw); // TODO Use this!
+				byte rad = Byte.parseByte(radRaw);
 				if(rad < 0) throw new NumberFormatException();
 				
 				Block centerBlock = ((Player)sender).getLocation().getBlock();
-				
 				Chunk centerChunk = ((Player)sender).getWorld().getChunkAt(centerBlock);
 				
-				sender.sendMessage("Relighting...");
+				LinkedList<Chunk> chunks = new LinkedList<Chunk>();
+				chunks.offer(centerChunk);// TODO queue all chunks
 				
-				Relighter.relightChunk(centerChunk);
+				sender.sendMessage("Relighting...");
+				Chunk currChk;
+				while((currChk = chunks.poll()) != null){
+					Relighter.relightChunk(currChk);
+				}
 				
 				sender.sendMessage("Done.");
-				
-				// TODO Re-light all chunks within radius
 			}
 			catch(NumberFormatException nfe){ // The radius wans't a valid number
 				return false;
