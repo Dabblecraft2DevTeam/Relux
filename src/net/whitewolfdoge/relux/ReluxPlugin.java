@@ -49,7 +49,11 @@ public class ReluxPlugin extends JavaPlugin{
 				Chunk centerChunk = ((Player)sender).getWorld().getChunkAt(centerBlock);
 				
 				LinkedList<Chunk> chunks = new LinkedList<Chunk>();
-				chunks.offer(centerChunk);// TODO queue all chunks
+				if(chunks.offer(centerChunk));// TODO queue all chunks
+				else{
+					sender.sendMessage("An unexpected exception has occurred:\nThe chunk could not be queued!");
+					throw new Exception();
+				}
 				
 				sender.sendMessage("Relighting...");
 				Chunk currChk;
@@ -59,7 +63,7 @@ public class ReluxPlugin extends JavaPlugin{
 				
 				sender.sendMessage("Done.");
 			}
-			catch(NumberFormatException nfe){ // The radius wans't a valid number
+			catch(Exception ex){ // The radius wans't a valid number
 				return false;
 			}
 		}
