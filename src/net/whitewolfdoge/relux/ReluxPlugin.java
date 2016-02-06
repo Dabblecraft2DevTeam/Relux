@@ -41,6 +41,7 @@ public class ReluxPlugin extends JavaPlugin{
 		else{
 			try{
 				byte rad = Byte.parseByte(radRaw); // TODO Use this!
+				if(rad < 0) throw new NumberFormatException();
 				
 				Block centerBlock = ((Player)sender).getLocation().getBlock();
 				
