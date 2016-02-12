@@ -43,8 +43,13 @@ public class ReluxPlugin extends JavaPlugin{
 		}
 		else{
 			try{
-				byte rad = Byte.parseByte(radRaw);
-				if(rad < 0) throw new NumberFormatException();
+				try{
+					byte rad = Byte.parseByte(radRaw);
+					if(rad < 0) throw new NumberFormatException();
+				}
+				catch(NumberFormatException nfex){ // The radius wans't a valid number
+					return false;
+				}
 				
 				Block centerBlock = ((Player)sender).getLocation().getBlock();
 				Chunk centerChunk = ((Player)sender).getWorld().getChunkAt(centerBlock);
@@ -64,7 +69,7 @@ public class ReluxPlugin extends JavaPlugin{
 				
 				sender.sendMessage("Done.");
 			}
-			catch(Exception ex){ // The radius wans't a valid number
+			catch(Exception ex){
 				return false;
 			}
 		}
