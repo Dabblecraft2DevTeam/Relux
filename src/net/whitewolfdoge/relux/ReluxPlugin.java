@@ -9,6 +9,7 @@ import org.bukkit.Chunk;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,7 +38,7 @@ public class ReluxPlugin extends JavaPlugin{
 	}
 	
 	private boolean processRequest(CommandSender sender, String radRaw){
-		if(sender.getName().equalsIgnoreCase("CONSOLE")){ // If the command is issued from the console
+		if(!(sender instanceof Entity)){ // If the command is issued from the console
 			sender.sendMessage(ChatColor.RED + "This command cannot be issued from the console.");
 		}
 		else{
