@@ -1,11 +1,11 @@
 package net.whiteWolfdoge.relux.util;
 
 import net.minecraft.server.v1_8_R3.BlockPosition;
-import net.minecraft.server.v1_8_R3.World;
+import net.minecraft.server.v1_8_R3.WorldServer;
 
 import org.bukkit.Chunk;
 import org.bukkit.block.Block;
-
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
 public class Relighter{
 	
@@ -33,13 +33,13 @@ public class Relighter{
 	 * @param Block blk		The block to be relighted
 	 */
 	public static void relightBlock(Block blk){
-		//blk.getState().update(true);
+		int blockX =			blk.getX();
+		int blockY =			blk.getY();
+		int blockZ =			blk.getZ();
+		BlockPosition blkPos =	new BlockPosition(blockX, blockY, blockZ);
 		
-		World wld =			(World)blk.getWorld();
-		int xLoc =			blk.getX();
-		int yLoc =			blk.getY();
-		int zLoc = 			blk.getZ();
-		BlockPosition bp =	new BlockPosition(xLoc, yLoc, zLoc);
-		wld.x(bp); // Magic!
+		CraftWorld craftWld = (CraftWorld)blk.getWorld();
+		WorldServer worldSrv = craftWld.getHandle();
+		worldSrv.x(blkPos); // Magic!
 	}
 }
