@@ -29,8 +29,9 @@ public class Relighter{
 	}
 	
 	/**
-	 * Use the following method to relight a single block
-	 * @param Block blk		The block to be relighted
+	 * Use the following method to relight a single block. This method is
+	 * proven to be the most efficient way of re-lighting.
+	 * @param blk		The block to be relighted
 	 */
 	public static void relightBlock(Block blk){
 		int blockX =			blk.getX();
