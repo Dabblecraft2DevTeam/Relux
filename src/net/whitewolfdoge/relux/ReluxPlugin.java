@@ -19,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ReluxPlugin extends JavaPlugin{
 	public final byte defaultRadius = 3;
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){ // Used for command preprocessing
 		if(cmd.getName().equalsIgnoreCase("relux")){ // If the command was "relux" or one of its aliases

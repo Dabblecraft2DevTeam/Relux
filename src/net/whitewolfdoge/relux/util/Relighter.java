@@ -39,7 +39,6 @@ public class Relighter{
 				}
 			}
 			Bukkit.getLogger().info(String.format("[Relux] Relit chunk (%d, %d) in world '%s'", chk.getX(), chk.getZ(), chk.getWorld().getName())); // Log the relight
-			// TODO Maybe unload chunk
 		}
 		
 		return !loadIssue;
