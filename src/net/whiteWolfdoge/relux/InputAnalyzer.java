@@ -47,11 +47,51 @@ class InputAnalyzer implements TabExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args){
 		if(args.length == 0){ // If there's no argument, tell info
-			sender.sendMessage(new String[]{ReluxPlugin.MSG_INFO, ReluxPlugin.MSG_USAGE});
+			sender.sendMessage(ReluxPlugin.MSG_INFO);
+				if(sender.hasPermission(ReluxPlugin.PERMISSION_USE)) // If the sender has permission
+					sender.sendMessage(ReluxPlugin.MSG_USAGE);
+				else // Else the sender is denied
+					sender.sendMessage(ReluxPlugin.MSG_EX_PERMISSION_DENIED);
+			return true;
 		}
-		boolean hasPerm = 		sender.hasPermission(ReluxPlugin.PERMISSION_USE);
-		boolean requiresLoc =	true;
-		if(sender instanceof Entity || sender instanceof Block)
-			requiresLoc = false;
+		else if(!sender.hasPermission(ReluxPlugin.PERMISSION_USE)){ // Else if permission is denied
+			sender.sendMessage(ReluxPlugin.MSG_EX_PERMISSION_DENIED);
+			return true;
+		}
+		else if(args.length != 1){ // Else if there's an invalid quantity of arguments
+			sender.sendMessage(new String[]{
+				ReluxPlugin.MSG_EX_ARGS_INVALID_QTY,
+				ReluxPlugin.MSG_USAGE});
+			return true;
+		}
+		else if(!radiusIsValid(args[0])){ // Else if the radius is invalid
+			sender.sendMessage(ReluxPlugin.MSG_EX_ARGS_INVALID_RADIUS);
+			return true;
+		}
+		else if(!(sender instanceof Entity) && !(sender instanceof Block)){ // Else if the location cannot be determined
+			sender.sendMessage(ReluxPlugin.MSG_EX_INVALID_SOURCE);
+			return true;
+		}
+		else{ // Else it can be processed
+			// TODO
+			return true;
+		}
+	}
+	
+	/**
+	 * The following method verifies that a radius is valid
+	 */
+	private static boolean radiusIsValid(String rawRadius){
+		try{
+			int rad = Integer.parseInt(rawRadius);
+			if(rad >= ReluxPlugin.MIN_RADIUS && rad <= ReluxPlugin.MAX_RADIUS){ // If the parsed radius is within range
+				return true;
+			}
+			else // Else the parsed radius is outside range
+				return false;
+		}
+		catch(NumberFormatException nfex){ // Catch an invalid number
+			return false;
+		}
 	}
 }
