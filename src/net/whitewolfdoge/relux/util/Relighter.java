@@ -1,14 +1,24 @@
 package net.whiteWolfdoge.relux.util;
 
-import net.minecraft.server.v1_8_R3.BlockPosition;
-import net.minecraft.server.v1_8_R3.WorldServer;
+import net.minecraft.server.v1_9_R1.BlockPosition;
+import net.minecraft.server.v1_9_R1.WorldServer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
 
 public class Relighter{
+	/**
+	 * Use the following method to relight a radius of chunks.
+	 * @param	cenChk		The center chunk to be relighted.
+	 * @param	rad		The radius of the chunks to be selected.
+	 * @return			Returns true if the task is successful.
+	 */
+	public static boolean relightChunkRadius(Chunk cenChk, byte rad){
+		return relightChunk(cenChk); //TODO actually do all chunks
+	}
+	
 	/**
 	 * Use the following method to relight a single chunk.
 	 * @param chk		The chunk to be relighted
@@ -57,6 +67,6 @@ public class Relighter{
 		
 		CraftWorld craftWld = (CraftWorld)blk.getWorld();
 		WorldServer worldSrv = craftWld.getHandle();
-		worldSrv.x(blkPos); // Magic!
+		worldSrv.w(blkPos); // Magic!
 	}
 }
