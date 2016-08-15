@@ -2,6 +2,9 @@ package net.whiteWolfdoge.relux;
 
 import java.util.List;
 
+import net.whiteWolfdoge.relux.util.Relighter;
+
+import org.bukkit.Chunk;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -73,8 +76,21 @@ class InputAnalyzer implements TabExecutor{
 			return true;
 		}
 		else{ // Else it can be processed
-			// TODO
-			return true;
+			Chunk chk;
+			if(sender instanceof Entity){ // If sender is an entity
+				chk = ((Entity)sender).getLocation().getChunk();
+				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
+				return true;
+			}
+			else if(sender instanceof Block){ // If sender is an entity
+				chk = ((Block)sender).getLocation().getChunk();
+				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
+				return true;
+			}
+			else{ // This won't ever happen!
+				sender.getServer().getLogger().warning("Something terrible has happened, get the pitchforks!");
+				return false;
+			}
 		}
 	}
 	
