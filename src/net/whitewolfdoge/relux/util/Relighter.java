@@ -11,7 +11,7 @@ public class Relighter{
 	/**
 	 * Use the following method to relight a radius of chunks.
 	 * @param	cenChk		The center chunk to be relighted.
-	 * @param	rad		The radius of the chunks to be selected.
+	 * @param	rad		The radius of the chunks to be relighted.
 	 * @return			Returns true if the task is successful.
 	 */
 	public static boolean relightChunkRadius(Chunk cenChk, byte rad){
