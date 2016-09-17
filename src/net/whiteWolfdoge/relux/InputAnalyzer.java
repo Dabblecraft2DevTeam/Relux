@@ -84,7 +84,7 @@ class InputAnalyzer implements TabExecutor{
 				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
 				return true;
 			}
-			else if(sender instanceof Block){ // If sender is an entity
+			else if(sender instanceof Block){ // If sender is a block
 				chk = ((Block)sender).getLocation().getChunk();
 				// TODO LOGGING Block $BLOCK_NAME at $BLOCK_WORLD ($BLOCK_X, $BLOCK_Y, $BLOCK_Z) issued relight of chunks within $(RADIUS - 1) of Chunk at ($CENTER_CHUNK_X, $CENTER_CHUNK_Z)
 				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
