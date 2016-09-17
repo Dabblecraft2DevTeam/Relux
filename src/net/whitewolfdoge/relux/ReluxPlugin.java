@@ -7,10 +7,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ReluxPlugin extends JavaPlugin{
 	private TabExecutor tex;
-	protected static final int
+	public static final int
 		MIN_RADIUS =	1,
 		MAX_RADIUS = 	15;
-	protected static final String
+	public static final String
 		CMD_MAIN =						"relux",
 		PERMISSION_USE =				"relux.use",
 		MSG_PREFIX =					ChatColor.LIGHT_PURPLE + "[Relux] " + ChatColor.YELLOW,
