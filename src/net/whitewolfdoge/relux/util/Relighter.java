@@ -45,6 +45,7 @@ public class Relighter{
 					}
 				}
 			}
+			// TODO Send the affected players the updated data
 			Bukkit.getLogger().info(String.format("[Relux] Relit chunk (%d, %d) in world '%s'", chk.getX(), chk.getZ(), chk.getWorld().getName())); // Log the relight
 		}
 		
