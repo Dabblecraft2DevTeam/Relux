@@ -1,12 +1,9 @@
 package net.whiteWolfdoge.relux.util;
 
-import net.minecraft.server.v1_9_R1.BlockPosition;
-import net.minecraft.server.v1_9_R1.WorldServer;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
 
 public class Relighter{
 	/**
@@ -55,18 +52,15 @@ public class Relighter{
 	}
 	
 	/**
-	 * Use the following method to relight a single block. This method is
-	 * proven to be the most efficient way of re-lighting.
+	 * Use the following method to relight a single block.
 	 * @param blk		The block to be relighted
 	 */
 	public static void relightBlock(Block blk){
 		int blockX =			blk.getX();
 		int blockY =			blk.getY();
 		int blockZ =			blk.getZ();
-		BlockPosition blkPos =	new BlockPosition(blockX, blockY, blockZ);
+		World blockWorld =		blk.getWorld();
 		
-		CraftWorld craftWld = (CraftWorld)blk.getWorld();
-		WorldServer worldSrv = craftWld.getHandle();
-		worldSrv.w(blkPos); // Magic!
+		Native.relightBlock(blockX, blockY, blockZ, blockWorld);
 	}
 }
