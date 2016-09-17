@@ -44,8 +44,24 @@ public class ReluxPlugin extends JavaPlugin{
 		//
 	}
 	
-	// TODO write doc
-	public void relightChunks(Chunk centerchunk, int radius){
+	/**
+	 * 
+	 * @param centerChunk	The chunk in the center of the area
+	 * @param radius		The range
+	 */
+	public boolean relightChunks(Chunk centerChunk, int radius){
 		// TODO
 	}
+	
+	// TODO write doc
+	public boolean relightChunk(Chunk chunk, int radius){
+		// TODO
+	}
+	
+	// TODO write doc
+	public boolean relightBlock(Chunk block, int radius){
+		// TODO
+	}
+
+
 }
