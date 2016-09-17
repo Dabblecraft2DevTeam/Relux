@@ -28,7 +28,7 @@ class Native{
 			return flag;
 		}
 	 */
-	static boolean relightBlock(int inBlockX, int inBlockY, int inBlockZ, World inBlockWorld){
+	protected static boolean relightBlock(int inBlockX, int inBlockY, int inBlockZ, World inBlockWorld){
 		BlockPosition blkPos =	new BlockPosition(inBlockX, inBlockY, inBlockZ);
 		
 		CraftWorld craftWld = (CraftWorld)inBlockWorld;
