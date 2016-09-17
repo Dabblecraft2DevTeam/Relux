@@ -1,5 +1,7 @@
 package net.whiteWolfdoge.relux.util;
 
+import net.whiteWolfdoge.relux.ReluxPlugin;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
@@ -46,7 +48,7 @@ public class Relighter{
 				}
 			}
 			// TODO Send the affected players the updated data
-			Bukkit.getLogger().info(String.format("[Relux] Relit chunk (%d, %d) in world '%s'", chk.getX(), chk.getZ(), chk.getWorld().getName())); // Log the relight
+			Bukkit.getLogger().info(String.format(ReluxPlugin.MSG_PREFIX + "Relit chunk (%d, %d) in world '%s'", chk.getX(), chk.getZ(), chk.getWorld().getName())); // Log the relight
 		}
 		
 		return !loadIssue;
