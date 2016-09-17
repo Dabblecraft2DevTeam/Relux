@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.whiteWolfdoge.relux.util.Relighter;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -79,11 +80,13 @@ class InputAnalyzer implements TabExecutor{
 			Chunk chk;
 			if(sender instanceof Entity){ // If sender is an entity
 				chk = ((Entity)sender).getLocation().getChunk();
+				// TODO LOGGING Entity $ENTITY_NAME at $ENTITY_WORLD ($ENTITY_X, $ENTITY_Y, $ENTITY_Z) issued relight of chunks within $(RADIUS - 1) of Chunk at ($CENTER_CHUNK_X, $CENTER_CHUNK_Z)
 				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
 				return true;
 			}
 			else if(sender instanceof Block){ // If sender is an entity
 				chk = ((Block)sender).getLocation().getChunk();
+				// TODO LOGGING Block $BLOCK_NAME at $BLOCK_WORLD ($BLOCK_X, $BLOCK_Y, $BLOCK_Z) issued relight of chunks within $(RADIUS - 1) of Chunk at ($CENTER_CHUNK_X, $CENTER_CHUNK_Z)
 				Relighter.relightChunkRadius(chk, Byte.parseByte(args[0]));
 				return true;
 			}
